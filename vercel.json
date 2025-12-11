@@ -1,6 +1,5 @@
 {
   "framework": null,
-  "installCommand": "composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader",
   "buildCommand": "npm --prefix react-frontend ci && npm --prefix react-frontend run build && cp -r react-frontend/build/* public/",
   "functions": {
     "api/index.php": {
