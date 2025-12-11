@@ -116,12 +116,16 @@ const Calendar = () => {
         // Empty cell before the first day of the month or after last day
         days.push(<div className="day empty" key={`empty-${i}`}></div>);
       } else {
-        const currentDay = new Date(year, month, dayCounter);
+        // --- FIX START: Capture the value in a constant ---
+        const currentDayNum = dayCounter; 
+        const currentDay = new Date(year, month, currentDayNum);
+        
         const hasEvent = events.some(event =>
-          event.date.getDate() === dayCounter &&
+          event.date.getDate() === currentDayNum && // Use currentDayNum, NOT dayCounter
           event.date.getMonth() === month &&
           event.date.getFullYear() === year
         );
+        // --- FIX END ---
 
         days.push(
           <motion.div
@@ -131,10 +135,10 @@ const Calendar = () => {
               ${isSameDay(currentDay, new Date()) ? "today" : ""}
               ${isSameDay(currentDay, selectedDate) ? "selected" : ""}
               ${hasEvent ? "has-event" : ""}`}
-            key={`day-${dayCounter}`}
+            key={`day-${currentDayNum}`}
             onClick={() => onDateClick(currentDay)}
           >
-            <span className="day-number">{dayCounter}</span>
+            <span className="day-number">{currentDayNum}</span>
             {hasEvent && <div className="event-dot" />}
           </motion.div>
         );
