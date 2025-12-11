@@ -49,6 +49,15 @@ class Handler extends ExceptionHandler
             ], 422);
         }
 
+        // Handle database connection errors for API routes
+        if (($e instanceof \PDOException || $e instanceof \Illuminate\Database\QueryException) && $request->expectsJson()) {
+            \Log::error('Database error: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Server Error',
+                'error' => config('app.debug') ? $e->getMessage() : 'Database connection failed. Please check your database configuration.',
+            ], 500);
+        }
+
         // Handle 404 errors for API routes
         if ($e instanceof NotFoundHttpException && $request->expectsJson()) {
             return response()->json([
@@ -65,6 +74,15 @@ class Handler extends ExceptionHandler
             if (file_exists($index)) {
                 return response()->file($index);
             }
+        }
+
+        // Handle general server errors for API routes
+        if ($request->expectsJson() && !config('app.debug')) {
+            \Log::error('Server error: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Server Error',
+                'error' => 'An unexpected error occurred. Please try again later.',
+            ], 500);
         }
 
         return parent::render($request, $e);

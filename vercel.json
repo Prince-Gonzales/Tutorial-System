@@ -3,7 +3,14 @@
   "buildCommand": "bash build.sh",
   "env": {
     "CI": "false",
-    "SKIP_PREFLIGHT_CHECK": "true"
+    "SKIP_PREFLIGHT_CHECK": "true",
+    "DB_CONNECTION": "pgsql",
+    "DB_HOST": "ep-floral-sound-a16f2ih8-pooler.a-southeast-1.aws.neon.tech",
+    "DB_PORT": "5432",
+    "DB_DATABASE": "neondb",
+    "DB_USERNAME": "neondb_owner",
+    "DB_PASSWORD": "npg_wKRslX9ck2af",
+    "DB_SSLMODE": "require"
   },
   "functions": {
     "api/index.php": {
