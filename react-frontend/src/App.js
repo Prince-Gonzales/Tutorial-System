@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Mainpage from './Role-Selection/Mainpage';
 import Login from './Student-Role/Login';
 import Signup from './Student-Role/Signup';
@@ -12,9 +12,15 @@ import StudentTutorPending from './Student-Role/StudentTutorPending';
 import TutorSchedule from './Tutor-Role/TutorSchedule';
 import StudentSched from './Student-Role/StudentSched';
 
-
-
-
+function NotFound() {
+    return (
+        <div style={{ padding: '2rem', textAlign: 'center' }}>
+            <h1>404 - Page Not Found</h1>
+            <p>The page you are looking for could not be found.</p>
+            <a href="/" style={{ color: '#007bff', textDecoration: 'underline' }}>Go to Home</a>
+        </div>
+    );
+}
 
 function App() {
     return (
@@ -33,6 +39,7 @@ function App() {
             <Route path="/student-tutor-pending" element={<StudentTutorPending />} />
             <Route path="/tutor-schedule" element={<TutorSchedule />} />
             <Route path='/student-schedule' element={<StudentSched />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>

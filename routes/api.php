@@ -18,10 +18,7 @@ Route::post('/tutor/login', [TutorController::class, 'login']);
 
 Route::get('/tutors', [TutorController::class, 'getAllTutors']);
 
-// routes/api.php
-Route::post('/tutor-requests', [TutorRequestController::class, 'store']);
-Route::get('/tutor-requests', [TutorRequestController::class, 'index']);
-
+// Tutor Request Routes
 Route::get('/tutor-requests', [TutorRequestController::class, 'index']);
 Route::post('/tutor-requests', [TutorRequestController::class, 'store']);
 Route::put('/tutor-requests/{id}', [TutorRequestController::class, 'update']);
@@ -40,4 +37,14 @@ Route::get('/tutor-rating', [TutorRequestController::class, 'getAverageRating'])
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Fallback route for undefined API endpoints
+Route::fallback(function (Request $request) {
+    return response()->json([
+        'error' => 'NOT_FOUND',
+        'message' => 'The requested API endpoint could not be found.',
+        'code' => 'NOT_FOUND',
+        'path' => $request->path(),
+    ], 404);
 });
