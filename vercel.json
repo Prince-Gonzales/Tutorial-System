@@ -3,7 +3,8 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.4"
+      "runtime": "vercel-php@0.7.4",
+      "excludeFiles": "{react-frontend/**,node_modules/**,public/static/**}"
     }
   },
   "routes": [

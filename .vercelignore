@@ -1,6 +1,5 @@
-# Ignore the frontend source (it's already built to public/)
-react-frontend
-node_modules
+# Keep react-frontend here so Vercel can build it!
+# react-frontend (Do not ignore this)
 
 # Ignore Laravel storage/cache
 storage/*.key
@@ -18,6 +17,7 @@ phpunit.xml
 tests
 README.md
 
-# Ignore local PHP dependencies (Vercel will install them fresh)
+# Ignore dependencies (Vercel installs them fresh)
+node_modules
 vendor
 composer.lock
