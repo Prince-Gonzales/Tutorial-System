@@ -1,0 +1,23 @@
+# Ignore the frontend source (it's already built to public/)
+react-frontend
+node_modules
+
+# Ignore Laravel storage/cache
+storage/*.key
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+
+# Ignore git and other dev tools
+.git
+.gitignore
+.editorconfig
+.env.example
+phpunit.xml
+tests
+README.md
+
+# Ignore local PHP dependencies (Vercel will install them fresh)
+vendor
+composer.lock
