@@ -6,15 +6,7 @@
     "api/index.php": {
       "runtime": "@vercel/php@1.2.0",
       "excludeFiles": "{react-frontend/**,node_modules/**,public/static/**}",
-      "includeFiles": [
-        "vendor/**",
-        "bootstrap/**",
-        "app/**",
-        "routes/**",
-        "config/**",
-        "public/index.php",
-        "storage/**"
-      ]
+      "includeFiles": "{vendor/**,bootstrap/**,app/**,routes/**,config/**,public/index.php}"
     }
   },
   "routes": [
