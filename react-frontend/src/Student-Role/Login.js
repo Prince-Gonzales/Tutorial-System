@@ -23,7 +23,10 @@ function Login() {
     setError('');
 
     try {
-      const res = await axios.post('/api/student/login', formData);
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://tutorial-system-b8d4fh0vp-prince-gonzales-projects.vercel.app/api/student/login'
+        : '/api/student/login';
+      const res = await axios.post(apiUrl, formData);
       localStorage.setItem('student', JSON.stringify(res.data.student));
       navigate('/student-dashboard');
     } catch (err) {

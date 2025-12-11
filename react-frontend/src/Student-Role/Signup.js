@@ -48,7 +48,10 @@ function Signup() {
 
     setIsSubmitting(true);
     try {
-      await axios.post("/api/student/register", form);
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://tutorial-system-b8d4fh0vp-prince-gonzales-projects.vercel.app/api/student/register'
+        : '/api/student/register';
+      await axios.post(apiUrl, form);
       navigate("/login", { state: { registered: true } });
     } catch (error) {
       alert("Registration failed. " + (error.response?.data?.message || ""));

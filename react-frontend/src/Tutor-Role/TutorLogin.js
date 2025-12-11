@@ -10,12 +10,14 @@ function TutorLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // In TutorLogin.js, update the handleLogin function:
-const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('/api/tutor/login', {
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://tutorial-system-b8d4fh0vp-prince-gonzales-projects.vercel.app/api/tutor/login'
+        : '/api/tutor/login';
+      const response = await axios.post(apiUrl, {
         username,
         password
       });

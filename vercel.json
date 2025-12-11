@@ -5,7 +5,7 @@
     "CI": "false",
     "SKIP_PREFLIGHT_CHECK": "true",
     "DB_CONNECTION": "pgsql",
-    "DB_HOST": "ep-floral-sound-a16f2ih8-pooler.a-southeast-1.aws.neon.tech",
+    "DB_HOST": "ep-floral-sound-a16f2ih8-pooler.ap-southeast-1.aws.neon.tech",
     "DB_PORT": "5432",
     "DB_DATABASE": "neondb",
     "DB_USERNAME": "neondb_owner",

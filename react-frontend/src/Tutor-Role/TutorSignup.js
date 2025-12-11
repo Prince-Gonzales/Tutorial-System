@@ -45,7 +45,6 @@ function TutorSignup() {
     );
   };
 
-  // In TutorSignup.js, update the handleSubmit function:
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -62,7 +61,10 @@ function TutorSignup() {
         age: parseInt(formData.age) // Ensure age is an integer
       };
       
-      const response = await axios.post("/api/tutor/register", payload);
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://tutorial-system-b8d4fh0vp-prince-gonzales-projects.vercel.app/api/tutor/register'
+        : '/api/tutor/register';
+      const response = await axios.post(apiUrl, payload);
 
       // Store the tutor data in localStorage immediately after registration
       localStorage.setItem("tutor", JSON.stringify(response.data.tutor));
