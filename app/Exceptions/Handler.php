@@ -41,6 +41,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e)
     {
+        // Handle validation errors for API routes
+        if ($e instanceof \Illuminate\Validation\ValidationException && $request->expectsJson()) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        }
+
         // Handle 404 errors for API routes
         if ($e instanceof NotFoundHttpException && $request->expectsJson()) {
             return response()->json([

@@ -48,8 +48,20 @@ function TutorSignup() {
   // In TutorSignup.js, update the handleSubmit function:
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate that at least one subject is selected
+    if (selectedSubjects.length === 0) {
+      alert("Please select at least one subject");
+      return;
+    }
+
     try {
-      const payload = { ...formData, subjects: selectedSubjects };
+      const payload = { 
+        ...formData, 
+        subjects: selectedSubjects,
+        age: parseInt(formData.age) // Ensure age is an integer
+      };
+      
       const response = await axios.post("/api/tutor/register", payload);
 
       // Store the tutor data in localStorage immediately after registration
@@ -58,8 +70,20 @@ function TutorSignup() {
       alert("Registered successfully");
       navigate("/tutor-login");
     } catch (err) {
-      console.error(err);
-      alert("Registration failed");
+      console.error("Registration error:", err);
+      
+      // Show detailed error message
+      let errorMessage = "Registration failed";
+      if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      } else if (err.response?.data?.errors) {
+        const errors = err.response.data.errors;
+        errorMessage = Object.values(errors).flat().join(", ");
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      alert(errorMessage);
     }
   };
 
