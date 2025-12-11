@@ -20,4 +20,4 @@ README.md
 # Ignore dependencies (Vercel installs them fresh)
 node_modules
 vendor
-composer.lock
+# composer.lock  <-- Removed this so Vercel uses your lock file
