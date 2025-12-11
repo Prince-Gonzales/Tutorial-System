@@ -4,7 +4,7 @@
   "buildCommand": "npm --prefix react-frontend ci && npm --prefix react-frontend run build && cp -r react-frontend/build/* public/",
   "functions": {
     "api/index.php": {
-      "runtime": "@vercel/php@1.2.0",
+      "runtime": "vercel-php@0.7.4",
       "excludeFiles": "{react-frontend/**,node_modules/**,public/static/**}",
       "includeFiles": "{vendor/**,bootstrap/**,app/**,routes/**,config/**,public/index.php}"
     }
