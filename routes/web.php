@@ -19,4 +19,4 @@ Route::get('/{any?}', function () {
         return response()->file($index);
     }
     return view('welcome');
-})->where('any', '.*');
+})->where('any', '^(?!api/).*');
