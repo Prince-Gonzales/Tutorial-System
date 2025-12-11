@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm --prefix react-frontend ci && npm --prefix react-frontend run build && cp -r react-frontend/build/* public/",
+  "functions": {
+    "api/index.php": {
+      "runtime": "@vercel/php@1.2.0"
+    }
+  },
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/public/static/$1" },
+    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "/public/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/public/manifest.json" },
+    { "src": "/logo192.png", "dest": "/public/logo192.png" },
+    { "src": "/logo512.png", "dest": "/public/logo512.png" },
+    { "src": "/robots.txt", "dest": "/public/robots.txt" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ]
+}

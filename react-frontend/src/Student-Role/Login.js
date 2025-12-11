@@ -23,7 +23,7 @@ function Login() {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:8000/api/student/login', formData);
+      const res = await axios.post('/api/student/login', formData);
       localStorage.setItem('student', JSON.stringify(res.data.student));
       navigate('/student-dashboard');
     } catch (err) {

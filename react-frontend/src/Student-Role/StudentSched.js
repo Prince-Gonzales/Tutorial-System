@@ -59,7 +59,7 @@ function StudentSched() {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:8000/api/student-sessions",
+          "/api/student-sessions",
           {
             params: {
               student_id: student.id,
@@ -89,7 +89,7 @@ function StudentSched() {
 
   const handleDeclineSession = async (sessionId) => {
     try {
-      await axios.put(`http://localhost:8000/api/tutor-requests/${sessionId}`, {
+      await axios.put(`/api/tutor-requests/${sessionId}`, {
         status: "declined",
       });
 
@@ -123,7 +123,7 @@ function StudentSched() {
     try {
       // Submit the rating to your backend
       const response = await axios.post(
-        `http://localhost:8000/api/sessions/${currentSessionId}/rate`,
+        `/api/sessions/${currentSessionId}/rate`,
         {
           rating,
           feedback,

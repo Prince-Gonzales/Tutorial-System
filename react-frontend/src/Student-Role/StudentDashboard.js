@@ -44,7 +44,7 @@ function StudentDashboard() {
     const fetchActiveSessions = async (studentId) => {
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/student-sessions",
+                "/api/student-sessions",
                 {
                     params: {
                         student_id: studentId,
@@ -61,7 +61,7 @@ function StudentDashboard() {
     const fetchPendingRequests = async (studentId) => {
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/tutor-requests",
+                "/api/tutor-requests",
                 {
                     params: {
                         student_id: studentId,
@@ -78,7 +78,7 @@ function StudentDashboard() {
     const fetchAllTutors = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/tutors"
+                "/api/tutors"
             );
             const tutorsData = response.data;
             setTutors(tutorsData);

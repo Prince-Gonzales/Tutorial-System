@@ -57,7 +57,7 @@ function StudentSelectTutors() {
 
     const fetchTutors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8000/api/tutors");
+        const { data } = await axios.get("/api/tutors");
         setTutors(data);
       } catch (err) {
         console.error("Error fetching tutors:", err);
@@ -94,7 +94,7 @@ function StudentSelectTutors() {
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/tutor-requests", {
+      await axios.post("/api/tutor-requests", {
         tutor_id: selectedTutor.id,
         student_id: student.id,
         subject: formData.subject,

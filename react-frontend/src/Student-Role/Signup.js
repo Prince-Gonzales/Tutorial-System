@@ -48,7 +48,7 @@ function Signup() {
 
     setIsSubmitting(true);
     try {
-      await axios.post("http://localhost:8000/api/student/register", form);
+      await axios.post("/api/student/register", form);
       navigate("/login", { state: { registered: true } });
     } catch (error) {
       alert("Registration failed. " + (error.response?.data?.message || ""));

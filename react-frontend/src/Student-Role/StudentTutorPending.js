@@ -39,7 +39,7 @@ function StudentTutorPending() {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:8000/api/tutor-requests",
+        "/api/tutor-requests",
         {
           params: {
             student_id: studentId,

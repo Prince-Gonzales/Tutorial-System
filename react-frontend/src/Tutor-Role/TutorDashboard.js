@@ -37,7 +37,7 @@ function TutorDashboard() {
       if (!tutor?.id) return;
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/tutor-rating",
+          "/api/tutor-rating",
           {
             params: { tutor_id: tutor.id },
           }
@@ -59,7 +59,7 @@ function TutorDashboard() {
       if (!tutor?.id) return;
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/accepted-sessions",
+          "/api/accepted-sessions",
           {
             params: { tutor_id: tutor.id },
           }
@@ -79,7 +79,7 @@ function TutorDashboard() {
       if (!tutor?.id) return;
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/completed-sessions",
+          "/api/completed-sessions",
           {
             params: { tutor_id: tutor.id },
           }
@@ -99,7 +99,7 @@ function TutorDashboard() {
       if (!tutor?.id) return;
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/tutor-requests",
+          "/api/tutor-requests",
           {
             params: { tutor_id: tutor.id, status: "pending" },
           }

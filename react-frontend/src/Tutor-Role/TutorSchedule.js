@@ -85,7 +85,7 @@ function TutorSchedule() {
       try {
         setHistoryLoading(true);
         const response = await axios.get(
-          "http://localhost:8000/api/completed-sessions",
+          "/api/completed-sessions",
           {
             params: {
               tutor_id: tutor.id,
@@ -120,7 +120,7 @@ function TutorSchedule() {
   const handleCompleteSession = async (sessionId) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/tutor-requests/${sessionId}`,
+        `/api/tutor-requests/${sessionId}`,
         { status: "completed" }
       );
 
@@ -184,7 +184,7 @@ function TutorSchedule() {
   const handleCancelSession = async (sessionId) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/tutor-requests/${sessionId}`,
+        `/api/tutor-requests/${sessionId}`,
         { status: "cancelled" }
       );
 
@@ -255,7 +255,7 @@ function TutorSchedule() {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:8000/api/accepted-sessions",
+          "/api/accepted-sessions",
           {
             params: {
               tutor_id: tutor.id,

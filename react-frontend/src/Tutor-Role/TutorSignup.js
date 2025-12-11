@@ -50,10 +50,7 @@ function TutorSignup() {
     e.preventDefault();
     try {
       const payload = { ...formData, subjects: selectedSubjects };
-      const response = await axios.post(
-        "http://localhost:8000/api/tutor/register",
-        payload
-      );
+      const response = await axios.post("/api/tutor/register", payload);
 
       // Store the tutor data in localStorage immediately after registration
       localStorage.setItem("tutor", JSON.stringify(response.data.tutor));

@@ -15,7 +15,7 @@ const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:8000/api/tutor/login', {
+      const response = await axios.post('/api/tutor/login', {
         username,
         password
       });

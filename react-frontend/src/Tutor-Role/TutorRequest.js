@@ -59,7 +59,7 @@ function TutorRequest() {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:8000/api/tutor-requests",
+          "/api/tutor-requests",
           {
             params: {
               tutor_id: tutor.id,
@@ -110,7 +110,7 @@ function TutorRequest() {
   const handleAccept = async (requestId) => {
     try {
        await axios.put(
-        `http://localhost:8000/api/tutor-requests/${requestId}`,
+        `/api/tutor-requests/${requestId}`,
         {
           status: "accepted",
         }
@@ -149,7 +149,7 @@ function TutorRequest() {
 
   const handleDecline = async (requestId) => {
     try {
-      await axios.put(`http://localhost:8000/api/tutor-requests/${requestId}`, {
+      await axios.put(`/api/tutor-requests/${requestId}`, {
         status: "declined",
       });
 
