@@ -2,7 +2,7 @@
   "buildCommand": "npm --prefix react-frontend ci && npm --prefix react-frontend run build && cp -r react-frontend/build/* public/",
   "functions": {
     "api/index.php": {
-      "runtime": "@vercel/php@1.2.0"
+      "runtime": "vercel-php@0.6.0"
     }
   },
   "routes": [
